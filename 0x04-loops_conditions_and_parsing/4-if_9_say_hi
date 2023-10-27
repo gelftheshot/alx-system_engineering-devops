@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# prints best school 10X using while loop and print hi at 9th
+c=1
+while [ $c -le 10 ]
+do
+	echo Best School
+	if [ $c = 9 ]
+	then
+		echo Hi
+	fi
+	((c++))
+done 
