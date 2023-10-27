@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# prints best school 10X using until loop
+c=1
+until [ $c -gt 10 ]
+do
+	echo Best School
+	((c++))
+done
