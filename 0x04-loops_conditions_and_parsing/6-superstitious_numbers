@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# prints best school 10X using while loop
+c=1
+while [ $c -le 20 ]
+do
+	if [ $c = 4 ]
+	then
+		echo bad luck from China
+	elif [ $c = 9 ]
+	then
+		echo bad luck from Japan
+	elif [ $c = 17 ]
+	then 
+		echo bad luck from Italy
+	else
+		echo $c
+	fi
+	((c++))
+done
