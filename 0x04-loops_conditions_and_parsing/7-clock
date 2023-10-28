@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# prints best school 10X using while loop
+c=0
+while [ $c -le 12 ]
+do
+	echo Hour: $c
+	b=1
+	while [ $b -le 59 ]
+	do
+		echo $b
+		((b++))
+	done
+	((c++))
+done
