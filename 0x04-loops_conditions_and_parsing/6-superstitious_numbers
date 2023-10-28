@@ -3,17 +3,19 @@
 c=1
 while [ $c -le 20 ]
 do
-	if [ $c = 4 ]
-	then
+	case $c in
+	4)
 		echo bad luck from China
-	elif [ $c = 9 ]
-	then
+	;;
+	9)
 		echo bad luck from Japan
-	elif [ $c = 17 ]
-	then 
+	;;
+	17)
 		echo bad luck from Italy
-	else
+	;;
+	*)
 		echo $c
-	fi
+	;;
+	esac
 	((c++))
 done
