@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 for file in *; do
-  if [ -f "$file" ]; then
-    name=$(basename "$file")
+	name=$(basename "$file")
     after_dash="${name#*-}"
     echo "$after_dash"
-  fi
 done
