@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# diplay the content of the current directory
 
 for file in *; do
 	name=$(basename "$file")
