@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-find . -maxdepth 1 -type f -exec basename {} \; | cut -d- -f2-
+for file in *; do
+  if [ -f "$file" ]; then
+    name=$(basename "$file")
+    after_dash="${name#*-}"
+    echo "$after_dash"
+  fi
+done
