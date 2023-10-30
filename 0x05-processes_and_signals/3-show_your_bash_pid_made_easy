@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#show only bash related process along with name
+pgrep bash -l
