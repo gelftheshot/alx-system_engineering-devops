@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# configering the constant file location to connect with ubunutu server
+host *
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school
