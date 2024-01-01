@@ -1,4 +1,4 @@
-# configering ssh with puppet
+# configering ssh with puppet and also it good practise to do so
 file_line { 'ssh_private_key':
   ensure  => present,
   line    => 'IdentityFile ~/.ssh/school',
