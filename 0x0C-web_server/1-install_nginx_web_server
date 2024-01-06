@@ -8,11 +8,8 @@ echo "Hello World!" > /etc/nginx/html/index.html
 new_cmd = "server {
     listen  80 default_server;
     listen [::]:80 default_server;
-    root /tec/nginx/html;
+    root /etc/nginx/html;
     index index.html index.htm;
 "
 echo $(new_cmd) > /etc/nginx/sites-available/default
-nginx -t
-if [ $? -eq 0 ]; then
-    service nginx restart
-fi
+service nginx restart
