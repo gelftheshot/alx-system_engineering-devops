@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # installing nginx and configuring it's files.
 
+apt-get update
+apt-get -y install nginx
+mkdir /etc/nginx/html
+echo "Hello World!" > /etc/nginx/html/index.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+
 new_cmd='server {
     listen  80 default_server;
     listen [::]:80 default_server;
@@ -17,7 +23,7 @@ new_cmd='server {
         root /etc/nginx/html;
         internal;
     }
-    add_header X-Served-By $hostname;
+    add_header X-Served-By $HOSTNAME;
 }'
 
 echo "$new_cmd" > /etc/nginx/sites-available/default
