@@ -8,33 +8,34 @@ apt-get -y install haproxy=2.8.\*
 echo "ENABLED=1" >> /etc/default/haproxy
 touch /etc/haproxy/haproxy.cfg
 cat <<EOF > /etc/haproxy/haproxy.cfg
+"global
+    log 127.0.0.1 local0 notice
+    maxconn 2000
+    user haproxy
+    group haproxy
 
-global
-	log 127.0.0.1 local0 notice
-	maxconn 2000
-	user haproxy
-	group haproxy
 defaults
-	log     global
-	mode    http
-	option  httplog
-	option  dontlognull
-	retries 3
-	option redispatch
-	timeout connect  5000
-	timeout client  10000
-	timeout server  10000
-listen servers
-	bind 0.0.0.0:80
-	mode http
-	stats enable
-	stats uri /haproxy?stats
-	balance roundrobin
-	option httpclose
-	option forwardfor
-	server 160166-web-01 52.205.88.236:80 check
-	server 160166-web-02 54.146.95.7:80 check
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option redispatch
+    timeout connect  5000
+    timeout client  10000
+    timeout server  10000
 
+listen servers
+    bind 0.0.0.0:80
+    mode http
+    stats enable
+    stats uri /haproxy?stats
+    balance roundrobin
+    option httpclose
+    option forwardfor
+    server 160166-web-01 52.205.88.236:80 check
+    server 160166-web-02 54.146.95.7:80 check
+"
 EOF
 
 service haproxy start
