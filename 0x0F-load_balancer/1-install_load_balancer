@@ -6,8 +6,7 @@ add-apt-repository ppa:vbernat/haproxy-2.8
 apt-get update
 apt-get -y install haproxy=2.8.\*
 echo "ENABLED=1" >> /etc/default/haproxy
-mv /etc/haproxy/haproxy.cfg{,.original}
-
+touch /etc/haproxy/haproxy.cfg
 cat <<EOF > /etc/haproxy/haproxy.cfg
 
 global
@@ -26,7 +25,7 @@ defaults
 	timeout client  10000
 	timeout server  10000
 listen servers
-	bind *:80
+	bind 0.0.0.0:80
 	mode http
 	stats enable
 	stats uri /haproxy?stats
