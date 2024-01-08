@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Install and configure HAproxy on your lb-01 server
+# Install and onfigure HAproxy on your lb-01 server
 
 apt-get install --no-install-recommends software-properties-common
 add-apt-repository ppa:vbernat/haproxy-2.8
 apt-get update
-apt-get -y install haproxy=2.8.\*
+apt-get -y install haproxy
 echo "ENABLED=1" >> /etc/default/haproxy
 touch /etc/haproxy/haproxy.cfg
-cat <<EOF > /etc/haproxy/haproxy.cfg
+cat <<EOF >> /etc/haproxy/haproxy.cfg
 "listen servers
     bind *:80
     mode http
@@ -15,7 +15,7 @@ cat <<EOF > /etc/haproxy/haproxy.cfg
     option httpclose
     option forwardfor
     server 160166-web-01 52.205.88.236:80 check
-    server 160166-web-02 54.146.95.7:80 check
+    server 160165-web-02 54.146.95.7:80 check
 "
 EOF
 
