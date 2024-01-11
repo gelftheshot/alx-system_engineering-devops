@@ -1,0 +1,29 @@
+#!/bin/bash
+# a Bash script that will display information about subdomains.
+
+func() {
+    if [ -z "$2" ]; then
+        domain="gelflearning.tech"
+        rec1=$(dig "www.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $4}')
+        ip1=$(dig "www.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $5}')
+        rec2=$(dig "lb-01.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $4}')
+        ip2=$(dig "lb-01.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $5}')
+        rec3=$(dig "web-01.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $4}')
+        ip3=$(dig "web-01.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $5}')
+        rec4=$(dig "web-02.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $4}')
+        ip4=$(dig "web-02.$domain" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $5}')
+        echo "The subdomain www is a $rec1 record and points to $ip1"
+        echo "The subdomain lb-01 is a $rec2 record and points to $ip2"
+        echo "The subdomain web-01 is a $rec3 record and points to $ip3"
+        echo "The subdomain web-02 is a $rec4 record and points to $ip4"
+    else
+        domain="$1"
+        subdomain="$2"
+        web="$subdomain.$domain"
+        record=$(dig "$web" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $4}')
+        ip=$(dig "$web" | grep -A1 'ANSWER SECTION:' | awk '/.tech/{print $5}')
+        echo "The subdomain $subdomain is a $record record and points to $ip"
+    fi
+}
+
+func "$1" "$2"
