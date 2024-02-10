@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# dumping all mysql data incase our database distroyed
+mysqldump -uroot -p"$1" --all-databases > backup.sql
+tar -cvzf "$(date +%d-%m-%Y)".tar.gz backup.sql
