@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
 # dumping all mysql data incase our database distroyed
-mysqldump -uroot -p"$1" --all-databases > backup.sql
-tar -cvzf "$(date +%d-%m-%Y)".tar.gz backup.sql
+
+day=$(date +"%d")
+month=$(date +"%m")
+year=$(date +"%Y")
+file_name="$day-$month-$year.tar.gz"
+
+# Check if a password was provided as the first argument
+if [ -n "$1" ]; then
+    mysqldump --all-databases -u root --password="$1" > backup.sql
+else
+    mysqldump --all-databases -u root > backup.sql
+fi
+
+tar -czvf "$file_name" backup.sql
