@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-    for a given employee ID, returns information
-    about his/her TODO list progress.
+    Python script to export data in the CSV format.
 """
 import requests
 import sys
@@ -16,7 +15,7 @@ if __name__ == "__main__":
     user_todos = [x for x in todos.json() if x["userId"] == user_id]
     name = str(user_id) + ".csv"
     with open(name, "w") as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for data in user_todos:
             row = [data["userId"], user_name, data["completed"], data["title"]]
             writer.writerow(row)
