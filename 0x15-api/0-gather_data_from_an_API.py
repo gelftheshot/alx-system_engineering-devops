@@ -18,4 +18,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".format(name, ctask, ttask))
     for x in user_todos:
         if x["completed"] is True:
-            print("\t{}".format(x["title"]))
+            print("\t {}".format(x["title"]))
