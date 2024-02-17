@@ -2,9 +2,9 @@
 """
     Python script to export data in the CSV format.
 """
+import csv
 import requests
 import sys
-import csv
 if __name__ == "__main__":
     user_id = int(sys.argv[1])
     employes = requests.get("https://jsonplaceholder.typicode.com/users")
