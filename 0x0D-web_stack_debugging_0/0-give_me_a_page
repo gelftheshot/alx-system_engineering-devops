@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# fixing appache2 server with this command
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+service apache2 start
