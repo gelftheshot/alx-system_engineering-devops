@@ -9,7 +9,6 @@ import requests
 def top_ten(subreddit):
     """
     Fetch and print the titles of the first 10 hot posts for a given subreddit.
-
     Parameters:
     subreddit (str): The name of the subreddit.
     """
