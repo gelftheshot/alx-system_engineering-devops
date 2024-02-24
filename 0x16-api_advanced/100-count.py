@@ -13,7 +13,7 @@ def count_words(subreddit_name, keyword_list, post_titles=[], next_page=""):
     """
     subreddit_url = ("https://www.reddit.com/r/{}/hot.json"
                      "?limit=100&after={}").format(subreddit_name, next_page)
-    request_headers = {"User-Agent": "My Application 1.0"}
+    request_headers = {"User-Agent": "Reddit Scraper v1.0"}
     response = requests.get(
         subreddit_url,
         headers=request_headers,

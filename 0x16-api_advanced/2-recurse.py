@@ -22,7 +22,7 @@ def recurse(subreddit, hot_list=[], after=""):
     url = "https://www.reddit.com/r/{}/hot.json?limit=100&after={}".format(
         subreddit, after
     )
-    headers = {"User-Agent": "My User Agent 1.0"}
+    headers = {"User-Agent": "Reddit Scraper v1.0"}
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code != 200:
         return None
